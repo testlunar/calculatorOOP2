@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 public class Calculator {
     /*
      * @author Diana Umudova
@@ -10,13 +12,21 @@ public class Calculator {
         double num1 = GetData.getDouble();
         double num2 = GetData.getDouble();
         char operator = GetData.getOperator();
-        result(num1, num2, operator);
+
+        double res = result(num1, num2, operator);
+        System.out.printf("Результат = " + num1 + " " + operator + " " + num2 + " = " + "%.2f", res);
     }
+
+
+
+
 
         public static double result(double num1, double num2, char operator) throws Exception {
 
+
             double result = 0.0;
             switch (operator) {
+
                 case '+':
                     result = num1 + num2;
                     break;
@@ -26,17 +36,17 @@ public class Calculator {
                 case '*':
                     result = num1 * num2;
                     break;
-                case '/':
-                    if (num2 == 0) {
-                            throw new Exception("Нельзя делить на ноль");
-                        }
-                     result = num1 / num2;
-                    break;
+
+                    case '/':
+
+                            if (num2 == 0.0) {
+                                throw new Exception("Нельзя делить на ноль");
+                            }
+                            result = num1 / num2;
+                            break;
                 default:
                     return result;
             }
-
-            System.out.printf("Результат = " + num1 + " " + operator + " " + num2 + " = " + "%.2f", result);
             return result;
         }
     }
